@@ -84,8 +84,18 @@ export const constantRoutes = [{
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
  */
-export const asyncRoutes = [
-    /** when your routing map is too long, you can split it into small modules **/
+export const asyncRoutes = [{
+        path: '/book',
+        component: Layout,
+        redirect: '/book/create',
+        children: [{
+            path: '/book/create',
+            component: () =>
+                import ('@/views/book/create'),
+            name: 'book',
+            meta: { title: '添加图书', icon: 'edit', roles: ['admin'] }
+        }]
+    },
     // 404 page must be placed at the end !!!
     { path: '*', redirect: '/404', hidden: true }
 ]
@@ -98,7 +108,6 @@ const createRouter = () => new Router({
 
 const router = createRouter()
 
-// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
     const newRouter = createRouter()
     router.matcher = newRouter.matcher // reset router
