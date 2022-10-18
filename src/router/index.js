@@ -101,7 +101,7 @@ export const asyncRoutes = [{
     children: [{
         path: '/book/create',
         component: () =>
-          import('@/views/book/Create'),
+          import('@/views/book/create'),
         name: 'bookCreate',
         meta: {
           title: '上传图书',
@@ -110,9 +110,9 @@ export const asyncRoutes = [{
         }
       },
       {
-        path: '/book/edit',
+        path: '/book/edit/:fileName',
         component: () =>
-          import('@/views/book/Edit'),
+          import('@/views/book/edit'),
         name: 'bookEdit',
         hidden: true,
         meta: {
@@ -125,7 +125,7 @@ export const asyncRoutes = [{
       {
         path: '/book/list',
         component: () =>
-          import('@/views/book/Create'),
+          import('@/views/book/list'),
         name: 'bookList',
         meta: {
           title: '图书列表',
