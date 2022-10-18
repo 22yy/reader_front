@@ -302,11 +302,7 @@ export default {
             message: response.msg || '删除成功',
             type: 'success'
           })
-<<<<<<< HEAD
-          this.handleFilter()
-=======
           this.getList()
->>>>>>> epub-list
         })
       })
     },
