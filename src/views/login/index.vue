@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">小慕读书</h3>
+        <h3 class="title">电子书后台管理系统</h3>
       </div>
 
       <el-form-item prop="username">
@@ -209,7 +209,7 @@ $cursor: #fff;
 </style>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
+$bg:#55637b;
 $dark_gray:#889aa4;
 $light_gray:#eee;
 

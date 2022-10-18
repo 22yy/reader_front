@@ -44,9 +44,9 @@ service.interceptors.response.use(
         console.log(res);
         // if the custom code is not 20000, it is judged as an error.
         if (res.code !== 0) {
-            const errMSg = res.msg || '请求失败'
+            const errMsg = res.msg || '请求失败'
             Message({
-                message: errMSg,
+                message: errMsg,
                 type: 'error',
                 duration: 5 * 1000
             })
@@ -54,29 +54,28 @@ service.interceptors.response.use(
             //判断token失效
             if (res.code === -2) {
                 // to re-login
-                MessageBox.confirm('Token失效,请重新登陆', '确认退出登录', {
-                    confirmButtonText: '重新登录',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    store.dispatch('user/resetToken').then(() => {
-                        location.reload()
-                    })
-                })
+                 MessageBox.confirm('您的登录状态已经失效，请重新登录', '登录失效', {
+                   confirmButtonText: '重新登录',
+                   cancelButtonText: '取消',
+                   type: 'warning'
+                 }).then(() => {
+                   store.dispatch('user/resetToken').then(() => {
+                     location.reload()
+                   })
+                 })
             }
-            return Promise.reject(new Error(res.msg || '请求失败'))
+            return Promise.reject(new Error(errMsg))
         } else {
             return res
         }
     },
     error => {
-        let message = error.message || '请求失败'
+        let errMsg = error.message || error.msg || '请求失败'
         if (error.response && error.response.data) {
-            const { data } = error.response
-            message = data.msg
+           errMsg = error.response.data.msg
         }
         Message({
-            message: error.message,
+            message: errMsg,
             type: 'error',
             duration: 5 * 1000
         })

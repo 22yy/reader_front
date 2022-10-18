@@ -1,5 +1,5 @@
 module.exports = {
-    title: '小慕读书后台管理系统',
+    title: '电子书后台管理系统',
 
     /**
      * @type {boolean} true | false
